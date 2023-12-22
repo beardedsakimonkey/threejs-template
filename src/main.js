@@ -1,4 +1,3 @@
-
 new EventSource('/esbuild').addEventListener('change', () => location.reload())
 import * as THREE from 'three'
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';

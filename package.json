@@ -2,9 +2,6 @@
   "scripts": {
     "start": "esbuild src/main.js --sourcemap --bundle --outdir=www --watch --servedir=www"
   },
-  "devDependencies": {
-    "esbuild": "0.19.9"
-  },
   "dependencies": {
     "three": "^0.159.0"
   }

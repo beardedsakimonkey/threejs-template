@@ -1,4 +1,4 @@
 node_modules/
 package-lock.json
-www/
-!www/index.html
+www/main.js
+www/*.map

@@ -1,8 +1,11 @@
 {
   "scripts": {
-    "start": "esbuild src/main.js --sourcemap --bundle --outdir=www --watch --servedir=www"
+    "start": "esbuild src/main.ts --sourcemap --bundle --outdir=www --watch --servedir=www"
   },
   "dependencies": {
     "three": "^0.159.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.160.0"
   }
 }

@@ -1,36 +1,37 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-// import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+// import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
+// import Stats from 'three/addons/libs/stats.module.js';
 
 new EventSource('/esbuild').addEventListener('change', () => location.reload());
 
-addEventListener('resize', () => {
+window.addEventListener('resize', () => {
     camera.aspect = innerWidth / innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(innerWidth, innerHeight);
 });
 
 const renderer = new THREE.WebGLRenderer();
-renderer.setPixelRatio(devicePixelRatio);
+renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(innerWidth, innerHeight);
 document.body.appendChild(renderer.domElement);
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xababab);
 
-/// CAMERA
+// Camera
 
-const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 1, 1000);
+const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, .1, 100);
 camera.position.z = 10;
 new OrbitControls(camera, renderer.domElement);
 
-/// LIGHT
+// Light
 
 const light = new THREE.PointLight(0xffffff, 400);
 light.position.set(8, 8, 8);
 scene.add(light);
 
-/// SPHERE
+// Mesh
 
 const mesh = new THREE.Mesh(
     new THREE.SphereGeometry(1),
@@ -40,9 +41,9 @@ const mesh = new THREE.Mesh(
 );
 scene.add(mesh);
 
-function animate() {
+function update(ts: number) {
     renderer.render(scene, camera);
-    requestAnimationFrame(animate);
+    requestAnimationFrame(update);
 }
 
-animate();
+update(0);

@@ -41,7 +41,7 @@ const mesh = new THREE.Mesh(
 );
 scene.add(mesh);
 
-function update(ts: number) {
+function update(_ts: number) {
     renderer.render(scene, camera);
     requestAnimationFrame(update);
 }
